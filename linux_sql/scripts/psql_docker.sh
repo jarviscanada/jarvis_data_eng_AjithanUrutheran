@@ -21,7 +21,7 @@ case $cmd in
   if [ $container_status -eq 0 ]; then
 		echo 'Container already exists'
 		exit 1	
-	fi
+  fi
 
   # Check # of CLI arguments
   if [ $# -ne 3 ]; then
@@ -32,15 +32,14 @@ case $cmd in
   # Create container
 	docker volume create pgdata
   # Start the container
-	export PGPASSWORD='password'
-	docker run --name jrvs-psql -e POSTGRES_PASSWORD=$PGPASSWORD -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres:9.6-alpine
+	docker run --name jrvs-psql -e POSTGRES_USER=$db_username -e POSTGRES_PASSWORD=$db_password -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres:9.6-alpine
   # Make sure you understand what's `$?`
 	exit $?   #Exit code 
 	;;
 
   start|stop) 
   # Check instance status; exit 1 if container has not been created
-  if [ $container_status -ne 0]; then
+  if [ $container_status -ne 0 ]; then
  	echo 'The container has not been created.'
 	exit 1
   fi
@@ -53,7 +52,7 @@ case $cmd in
 	exit $?
 	;;	
   
-  *)
+  *) #DEFAULT CASE
 	echo 'Illegal command'
 	echo 'Commands: start|stop|create'
 	exit 1
