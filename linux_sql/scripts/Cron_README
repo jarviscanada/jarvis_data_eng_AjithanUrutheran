@@ -1,0 +1,48 @@
+Hello, here is some documentation on how the cron jobs work!
+
+Make sure you are in the scripts directory.
+cd /home/centos/Desktop/jarvis_data_eng_ajithan/linux_sql/scripts/
+
+
+Once in here, I recommend you create a psql docker instance if you haven't already.
+	bash psql_docker.sh create [username] [password]
+
+
+If you have created a psql docker instance, you should start the psql service using docker
+	bash psql_docker.sh start
+
+Connect to your psql database using the following command and enter password:
+	psql -h localhost -U postgres
+
+	*Helpful Tip:
+		You can run the sql/ddl.sql script to create tables
+
+
+To check if the tables have been created you can connect to host_agent
+	psql \c host_agent
+
+We can use the following queries to check if the data exists.
+	SELECT * from host_info;
+
+	SELECT * from host_usage;
+
+
+
+To manually add the host_info, we can run the host_info script along with the following arguements
+
+	bash host_usage.sh localhost 5432 host_agent postgres password
+	bash host_info.sh localhost 5432 host_agent postgres password (can only setup the machine once)
+
+CRON
+service crond stop (pauses cron)
+service crond restart (starts the cron daemon)
+
+
+To add a cron script you can...
+
+bash> crontab - e
+
+* * * * * bash /home/centos/Desktop/jarvis_data_eng_ajithan/linux_sql/scripts/host_usage.sh localhost 5432 host_agent postgres password > /tmp/host_usage.log
+
+
+
