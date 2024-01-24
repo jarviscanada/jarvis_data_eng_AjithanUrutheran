@@ -26,7 +26,6 @@ total_mem=$(echo "$vmstat_mb" | tail -1 | awk '{print $4}')
 timestamp=$(date '+%Y-%m-%d %H:%M:%S')
 
 export PGPASSWORD=$psql_password
-host_id=$(psql -h $psql_host -p $psql_port -d $db_name -U $psql_user -t -c "SELECT id FROM host_info WHERE hostname='$hostname'")
 
 insert_stmt="INSERT INTO host_info(hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, l2_cache, \"timestamp\", total_mem) VALUES ('$hostname','$cpu_number','$cpu_architecture','$cpu_model','$cpu_mhz','$l2_cache','$timestamp','$total_mem');"
 
