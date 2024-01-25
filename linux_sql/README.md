@@ -50,10 +50,32 @@ The Linux resource cluster monitoring agent program was created through containe
 # Scripts
 
 ## psql_docker.sh
-      Used to create postgres database instance inside a docker container
-      -
+      -Used to create postgres database instance inside a docker container
+      -List of arguements
+                  -Create (creates the psql container provided a username and password)
+                  -Start (starts the psql container)
+                  -Stop (stops the psql container)
 
 ## ddl.sql
       -Used to create the schema of the host_info and host_usage tables to be used in application
       -Allows for user to store data collected from bash scripts (host_info.sh and host_usage.sh)
+## host_info.sh
+      -Collects and inserts hardware specifications of host device into host_info table in database
+      -Only collected once per container
+      -Must specify host, port, db_name, username and password as arguements when running
+## host_usage.sh
+      -Periodically collects and inserts hardware usage information of host device into database
+      -Automated using crontab job as to monitor usage data in realtime
+      -Must specify host, port, db_name, username and password as arguements when running
+## Crontab
+      -Automates running of host_usage.sh script to collect hardware usage data every minute
+
+# Database Modeling
+
+### Host Info Table
+| Column Name | Data Type | Constraint |
+|-------------|-----------|------------|
+|id           |SERIAL     | Primary Key|
+
+
 
