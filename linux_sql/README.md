@@ -97,3 +97,13 @@ The Linux resource cluster monitoring agent program was created through containe
 |disk_available | INT4 | NOT NULL |
 
 
+# Test
+      Testing was performed for this project through first inserting sample queries into the database to test the schema. 
+      Once the schema proved to support test queries, the tables were cleared and the host_info.sh script was run. 
+      Updates to the table were checked by running SELECT * FROM HOST_INFO;. This command was successful as it
+      displayed the current host's hardware specifications. A crontab job was created and ran periodically to test
+      if the hosts usage data was inserted into the host_usage table. This also proved to be successful as
+      SELECT * FROM HOST_USAGE; returned updated usage data with recent time stamps.
+# Deployment
+      -
+
