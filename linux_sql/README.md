@@ -105,11 +105,14 @@ The Linux resource cluster monitoring agent program was created through containe
       if the hosts usage data was inserted into the host_usage table. This also proved to be successful as
       SELECT * FROM HOST_USAGE; returned updated usage data with recent time stamps.
 # Deployment
-      -Program was deployed using Docker, Crontab, Git, Github
+      Program was deployed using Docker, Crontab, Git, Github
       -Docker (Utilized for hosting PostgreSQL database)
       -Crontab (Used to periodically execute bash scripts)
       -Git (Used for version control locally)
       -Github (Used to store release branch that is ready to be installed on any peers on network)
-
+# Improvements
+- **Cleaning up old data:** Find the average of old usage data and combine them into an average tuple and delete old records as to save space on the device. Allows for very old data to be stored in 1 tuple rather than 1440 tuples for every minute of the old day.
+- **Providing or taking stray resources:** Create an upper and lower bound threshold for hardware usage. If usage is under lowerbound, take away resources from container and update bounds. If usage is above upperbound, increase resources supplied to container and update bounds.
+- **Alerting if usage is nearing full capacity**: Allows LCA team to be notified and to take appropriate measures to prevent any faults in program.
 
 
