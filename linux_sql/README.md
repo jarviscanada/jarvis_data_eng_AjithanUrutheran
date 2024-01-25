@@ -76,6 +76,13 @@ The Linux resource cluster monitoring agent program was created through containe
 | Column Name | Data Type | Constraint |
 |-------------|-----------|------------|
 |id           |SERIAL     | Primary Key|
-
+|hostname     |VARCHAR    | NOT NULL, UNIQUE |
+|cpu_number | INT2 | NOT NULL |
+|cpu_architecture | VARCHAR | NOT NULL |
+|cpu_model | VARCHAR | NOT NULL |
+|cpu_mhz | FLOAT8 | NOT NULL |
+|l2_cache | INT4 | NOT NULL |
+|timestamp | TIMESTAMP | NULL |
+|total_mem | INT4 | NULL |
 
 
