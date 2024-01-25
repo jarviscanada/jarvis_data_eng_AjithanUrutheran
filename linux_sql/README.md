@@ -85,4 +85,15 @@ The Linux resource cluster monitoring agent program was created through containe
 |timestamp | TIMESTAMP | NULL |
 |total_mem | INT4 | NULL |
 
+### Host Usage Table
+| Column Name | Data Type | Constraint |
+|-------------|-----------|------------|
+|timestamp | TIMESTAMP | NOT NULL |
+|host_id | SERIAL | FOREIGN KEY |
+|memory_free | INT4 | NOT NULL |
+|cpu_idle | INT2 | NOT NULL |
+|cpu_kernel | INT2 | NOT NULL |
+|disk_io | INT4 | NOT NULL |
+|disk_available | INT4 | NOT NULL |
+
 
