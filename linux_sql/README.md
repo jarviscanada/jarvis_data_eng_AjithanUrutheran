@@ -1,7 +1,7 @@
 # Linux Resource Cluster Monitoring Agent
 
 # Introduction
-The Linux resource cluster monitoring agent is a minimum viable product (MVP) that will monitor the resources across a cluster environment. Many bash scripts will execute in order to perform tasks such as registering a host container's information as well as frequently updating a host container's usage. The users of this program will be the Linux Cluster Administration team (LCA). The LCA will use this program to manage the many nodes in our Linux cluster. Technologies that are explored in this program include Git (Version Control), Linux bash script, docker (hosting and containerizing database), and PostgreSQL (storing and querying data).
+The Linux resource cluster monitoring agent is a minimum viable product (MVP) that will monitor the resources across a cluster environment. Many bash scripts will execute in order to perform tasks such as registering a host container's information as well as updating a host container's usage in realtime. The users of this program will be the Linux Cluster Administration team (LCA). The LCA will use this program to monitor the nodes in our Linux cluster and collect information to make load/storage balancing decisions. Technologies that are explored in this program include Git (Version Control), Linux bash script, docker (hosting and containerizing database), and PostgreSQL (storing and querying data).
 
 # Quick Start
 1. Start a psql instance using psql_docker.sh
@@ -26,7 +26,7 @@ The Linux resource cluster monitoring agent is a minimum viable product (MVP) th
    ``` bash
     ./scripts/host_usage.sh psql_host psql_port db_name psql_user psql_password
    ```
-5. Setup Crontab to periodically collect hardware usage data for current psql instance
+5. Setup Crontab to periodically collect hardware usage data for current psql instance in one minute intervals
 
       Create a crontab job using the following command:
       ``` bash
@@ -36,4 +36,7 @@ The Linux resource cluster monitoring agent is a minimum viable product (MVP) th
      ``` bash
      * * * * * bash /home/centos/dev/jrvs/bootcamp/linux_sql/host_agent/scripts/host_usage.sh
      ```
+      How do we stop the crontab job?
+      >Stop the crontab job by editting and removing the job or stopping the crond service
 # Implementation
+The Linux resource cluster monitoring agent program was created through containerizing a psql instance to 
