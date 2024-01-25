@@ -1,7 +1,7 @@
 # Linux Resource Cluster Monitoring Agent
 
 # Introduction
-The Linux resource cluster monitoring agent is a minimum viable product (MVP) that will monitor the resources across a cluster environment. Many bash scripts will execute in order to perform tasks such as registering a host container's information as well as updating a host container's usage in realtime. The users of this program will be the Linux Cluster Administration team (LCA). The LCA will use this program to monitor the nodes in our Linux cluster and collect information to make load/storage balancing decisions. Technologies that are explored in this program include Git (Version Control), Linux bash script, docker (hosting and containerizing database), and PostgreSQL (storing and querying data).
+The Linux resource cluster monitoring agent is a minimum viable product (MVP) that will monitor the resources across a cluster environment. Many bash scripts will execute in order to perform tasks such as registering a host container's information as well as updating a host container's usage in real time. The users of this program will be the Linux Cluster Administration team (LCA). The LCA will use this program to monitor the nodes in our Linux cluster and collect information to make load- and storage-balancing decisions. Technologies that are explored in this program include Git (version control), Linux bash script, docker (hosting and containerizing database), and PostgreSQL (storing and querying data).
 
 # Quick Start
 1. Start a psql instance using psql_docker.sh
@@ -10,7 +10,7 @@ The Linux resource cluster monitoring agent is a minimum viable product (MVP) th
       ``` bash
      ./scripts/psql_docker.sh create [username] [password]
       ```
-      If a psql docker instance has been created, start/stop the instance using the following command:
+      If a psql docker instance has been created, start or stop the instance using the following command:
      ``` bash
      ./scripts/psql_docker.sh (start | stop)
      ```
@@ -18,15 +18,15 @@ The Linux resource cluster monitoring agent is a minimum viable product (MVP) th
      ``` bash
      psql -h localhost -U postgres -p 5432 -d host_agent -f sql/ddl.sql
      ```
-3. Insert hardware specs data into the DB using host_info.sh bash script
+3. Insert hardware specs data into the DB using the host_info.sh bash script
     ``` bash
      ./scripts/host_info.sh psql_host psql_port db_name psql_user psql_password
     ```
-4. Insert hardware usage data into the DB using host_usage.sh bash script
+4. Insert hardware usage data into the DB using the host_usage.sh bash script
    ``` bash
     ./scripts/host_usage.sh psql_host psql_port db_name psql_user psql_password
    ```
-5. Setup Crontab to periodically collect hardware usage data for current psql instance in one minute intervals
+5. Setup Crontab to periodically collect hardware usage data for current psql instance in one-minute intervals
 
       Create a crontab job using the following command:
       ``` bash
@@ -42,7 +42,7 @@ The Linux resource cluster monitoring agent is a minimum viable product (MVP) th
       Why are the files not executable?
       >Use chmod to alter permissions of files and add executable permissions if they are missing.
 # Implementation
-The Linux resource cluster monitoring agent program was created through containerizing a psql instance using docker. Bash scripts we're built to provide the psql instance in the container with functionalities. Once the container was running, ddl.sql was utilized for table creation (host_info and host_usage). The host's hardware information was inserted into the DB by running the host_info.sh script. The host's resource usage was inserted and stored as well by running the host_usage.sh script. In order to automate collecting the host's resource usage, a crontab job was created to run at minute intervals running the host_usage.sh script. This allowed for realtime population and updates of our psql instance.
+The Linux resource cluster monitoring agent program was created through containerizing a psql instance using docker. Bash scripts we're built to provide the psql instance in the container with functionalities. Once the container was running, ddl.sql was utilized for table creation (host_info and host_usage). The host's hardware information was inserted into the DB by running the host_info.sh script. The host's resource usage was inserted and stored as well by running the host_usage.sh script. In order to automate collecting the host's resource usage, a crontab job was created to run the host_usage.sh script at minute intervals. This allowed for real time population and updates to our psql instance.
 # Architecture
 ![Linux resource cluster monitoring agent architecture](./assets/architecture.png)
 
@@ -65,7 +65,7 @@ The Linux resource cluster monitoring agent program was created through containe
       -Must specify host, port, db_name, username and password as arguements when running
 ## host_usage.sh
       -Periodically collects and inserts hardware usage information of host device into database
-      -Automated using crontab job as to monitor usage data in realtime
+      -Automated using crontab job as to monitor usage data in real time
       -Must specify host, port, db_name, username and password as arguements when running
 ## Crontab
       -Automates running of host_usage.sh script to collect hardware usage data every minute
@@ -98,21 +98,21 @@ The Linux resource cluster monitoring agent program was created through containe
 
 
 # Test
-      Testing was performed for this project through first inserting sample queries into the database to test the schema. 
-      Once the schema proved to support test queries, the tables were cleared and the host_info.sh script was run. 
+      Testing was performed for this project by first inserting sample queries into the database to test the schema. 
+      Once the schema proved to support test queries, the tables were cleared, and the host_info.sh script was run. 
       Updates to the table were checked by running SELECT * FROM HOST_INFO;. This command was successful as it
       displayed the current host's hardware specifications. A crontab job was created and ran periodically to test
-      if the hosts usage data was inserted into the host_usage table. This also proved to be successful as
+      if the host usage data was inserted into the host_usage table. This also proved to be successful as
       SELECT * FROM HOST_USAGE; returned updated usage data with recent time stamps.
 # Deployment
-      Program was deployed using Docker, Crontab, Git, Github
-      -Docker (Utilized for hosting PostgreSQL database)
+      The program was deployed using Docker, Crontab, Git and Github.
+      -Docker (Utilized for hosting PostgreSQL databases)
       -Crontab (Used to periodically execute bash scripts)
       -Git (Used for version control locally)
-      -Github (Used to store release branch that is ready to be installed on any peers on network)
+      -Github (Used to store release branch that is ready to be installed on any peers on the network)
 # Improvements
-- **Cleaning up old data:** Find the average of old usage data and combine them into an average tuple and delete old records as to save space on the device. Allows for very old data to be stored in 1 tuple rather than 1440 tuples for every minute of the old day.
-- **Providing or taking stray resources:** Create an upper and lower bound threshold for hardware usage. If usage is under lowerbound, take away resources from container and update bounds. If usage is above upperbound, increase resources supplied to container and update bounds.
-- **Alerting if usage is nearing full capacity**: Allows LCA team to be notified and to take appropriate measures to prevent any faults in program.
+- **Cleaning up old data:** Find the average of old usage data and combine them into an average tuple and delete old records to save space on the device. Allows for very old data to be stored in 1 tuple rather than 1440 tuples for every minute of the old day.
+- **Providing or taking stray resources:** Create an upper and lower bound threshold for hardware usage. If usage is under lowerbound, take away resources from the container and update bounds. If usage is above the upperbound, increase the resources supplied to the container and update the bounds.
+- **Alerting if usage is nearing full capacity**: Allows the LCA team to be notified and to take appropriate measures to prevent any faults in the program.
 
 
