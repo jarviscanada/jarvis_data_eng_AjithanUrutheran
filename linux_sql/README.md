@@ -105,5 +105,11 @@ The Linux resource cluster monitoring agent program was created through containe
       if the hosts usage data was inserted into the host_usage table. This also proved to be successful as
       SELECT * FROM HOST_USAGE; returned updated usage data with recent time stamps.
 # Deployment
-      -
+      -Program was deployed using Docker, Crontab, Git, Github
+      -Docker (Utilized for hosting PostgreSQL database)
+      -Crontab (Used to periodically execute bash scripts)
+      -Git (Used for version control locally)
+      -Github (Used to store release branch that is ready to be installed on any peers on network)
+
+
 
