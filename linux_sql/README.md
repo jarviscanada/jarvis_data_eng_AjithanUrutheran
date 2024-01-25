@@ -10,7 +10,7 @@ The Linux resource cluster monitoring agent is a minimum viable product (MVP) th
       ``` bash
      ./scripts/psql_docker.sh create [username] [password]
       ```
-      If a psql docker instance has been created, start/stop the instance using the following command.
+      If a psql docker instance has been created, start/stop the instance using the following command:
      ``` bash
      ./scripts/psql_docker.sh (start | stop)
      ```
@@ -20,6 +20,20 @@ The Linux resource cluster monitoring agent is a minimum viable product (MVP) th
      ```
 3. Insert hardware specs data into the DB using host_info.sh bash script
     ``` bash
-     ./scripts/psql_docker.sh (start | stop)
+     ./scripts/host_info.sh psql_host psql_port db_name psql_user psql_password
     ```
 4. Insert hardware usage data into the DB using host_usage.sh bash script
+   ``` bash
+    ./scripts/host_usage.sh psql_host psql_port db_name psql_user psql_password
+   ```
+5. Setup Crontab to periodically collect hardware usage data for current psql instance
+
+      Create a crontab job using the following command:
+      ``` bash
+     crontab -e
+      ```
+      Edit the crontab job and insert the following command:
+     ``` bash
+     * * * * * bash /home/centos/dev/jrvs/bootcamp/linux_sql/host_agent/scripts/host_usage.sh
+     ```
+# Implementation
