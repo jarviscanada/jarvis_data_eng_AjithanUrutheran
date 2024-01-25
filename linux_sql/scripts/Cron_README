@@ -12,7 +12,7 @@ If you have created a psql docker instance, you should start the psql service us
 	bash psql_docker.sh start
 
 Connect to your psql database using the following command and enter password:
-	psql -h localhost -U postgres
+	psql -h localhost -p 5432 -U postgres
 
 	*Helpful Tip:
 		You can run the sql/ddl.sql script to create tables
