@@ -37,8 +37,23 @@ The Linux resource cluster monitoring agent is a minimum viable product (MVP) th
      * * * * * bash /home/centos/dev/jrvs/bootcamp/linux_sql/host_agent/scripts/host_usage.sh
      ```
       How do we stop the crontab job?
-      >Stop the crontab job by editting and removing the job or stopping the crond service
+      >Stop the crontab job by editting and removing the job or stopping the crond service.
+
+      Why are the files not executable?
+      >Use chmod to alter permissions of files and add executable permissions if they are missing.
 # Implementation
 The Linux resource cluster monitoring agent program was created through containerizing a psql instance using docker. Bash scripts we're built to provide the psql instance in the container with functionalities. Once the container was running, ddl.sql was utilized for table creation (host_info and host_usage). The host's hardware information was inserted into the DB by running the host_info.sh script. The host's resource usage was inserted and stored as well by running the host_usage.sh script. In order to automate collecting the host's resource usage, a crontab job was created to run at minute intervals running the host_usage.sh script. This allowed for realtime population and updates of our psql instance.
 # Architecture
 ![Linux resource cluster monitoring agent architecture](./assets/architecture.png)
+
+
+# Scripts
+
+## psql_docker.sh
+      Used to create postgres database instance inside a docker container
+      -
+
+## ddl.sql
+      -Used to create the schema of the host_info and host_usage tables to be used in application
+      -Allows for user to store data collected from bash scripts (host_info.sh and host_usage.sh)
+
