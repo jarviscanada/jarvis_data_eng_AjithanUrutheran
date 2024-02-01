@@ -1,0 +1,147 @@
+# Preferred name (Characters only)
+name: "Ajithan Urutheran"
+# Your GitHub repo root URL
+github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_AjithanUrutheran
+
+# Introduce yourself (80-120 words)
+# Suggestions: you should 
+# 1) describe your academic and work experience (please focus on transferable/job related tech and soft skills only)
+# 2) explain your passion for the role you are looking for (e.g. developer, BSA, QA, tech support, etc.)
+# 3) mention what kind of role you are looking for
+# 4) briefly talk about your qualifications (soft and tech) to justify why the hiring manager should hire your 
+summary: Hi, my name is Ajithan Urutheran. I'm a junior software engineer that recently graduated from Toronto Metropolitan University (formerly Ryerson University) with a Bachelor of Engineering in Computer Engineering with a specialization in Software Engineering. Some of my favourite courses include distributed cloud computing, fundamentals of data engineering, advanced data structures and algorithms, software testing and quality assurance and software project management, all of which helped broaden my knowledge of software development. I also have work experience as a full stack developer at RE/MAX where I have developed components and maintained websites using React.JS, Node.JS, React.JS and MongoDB. In addition, I have worked as a researcher at Toronto Metropolitan University where I spearheaded the development of a geographic information system (GIS) web application using geospatial research. I enjoyed the thrill of creating software applications to help out my friends with automating their tasks. The rapid changes of the software industry allow me to feel at ease as there are always new technologies to explore and learn. I am seeking a developer position that allows me to delve into backend development or full stack development. I'm looking forward to leveraging my experiences as a full-stack developer to join the Fintech industry.
+# Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
+# DO NOT mention skills that you don't want to work on in the future (e.g. MS office)
+skills:
+  # At least 5 skills
+  proficient:
+    - Java
+    - Python
+    - Javascript
+    - Linux/Bash
+    - RDBMS/SQL
+    - HTML5/CSS3
+    - Agile/Scrum
+    - Git
+
+  # At least 5 skills
+  competent:
+    - React.JS
+    - Node.JS
+    - Next.JS
+    - MongoDB
+    - Tailwind
+    - RESTful Api
+    - JUnit Testing
+    - Docker
+    - Google Cloud Platform
+  # At least 5 skills
+  familiar:
+    - RabbitMQ
+    - gRPC
+    - C
+    - VHDL/VERILOG
+    - AWS
+
+# List of Jarvis projects
+jarvis_projects:
+  - name: "Linux Cluster Resource Monitoring App"
+    git_url: "/linux_sql"
+    # Please read the project description guideline carefully. Make sure you follow the simplified SDLC pattern. (t.ly/NlXQ)
+    # Please include the following keywords: CentOS, Bash/Shell, docker, RDBMS/SQL/Postgresql, crontab, data analytics
+    description: Developed a Linux Cluster Resource Monitoring Agent App in order monitor resource usage across a cluster environment using Linux bash scripts, Git (version control), PostgreSQL (storing/querying usage data) and docker (containerizing database). The application will log the hardware specifications of the host connected to the node as well as the host's usage data. The usage data will be inserted into to a PSQL docker instance. Manually tested bash scripts by using dummy data and viewed data with select statements in SQL.
+  #- name: "Core Java Apps"
+   # git_url: "/core_java"
+    #description:
+      #Keywords: Java 8, REST API, OAuth, Design patterns (e.g. DAO, MVC), JUnit, Mockito, Docker
+     # - "Twitter CRUD App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+      # Keywords: Java 8, JDBC, RDBMS, SQL, CRUD,DAO
+      #- "JDBC App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+      # Keywords: Java 8, Lambda, Stream API, IntelliJ
+      #- "Grep App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+  # Please remove not started projects below so that they don't show up in your profile for now.
+  # You will need to add a project back to your profile upon completion
+  #- name: "Spring RESTful Microservices App"
+   # git_url: "/springboot"
+    #Keywords: Java8, Spring Boot, REST API, Swagger, Postman, Microservice, Docker, JDBC/JDBCTemplate/DataSource, RDBMS/SQL, Junit, Mockito, etc.
+    #description: ""
+  #- name: "Python Data Analytics"
+  #  git_url: "/python_data_anlytics"
+  #  description: ""
+  #- name: "Hadoop"
+  #  git_url: "/hadoop"
+  #  description: ""
+  #- name: "Spark"
+  #  git_url: "/spark"
+  #  description: ""
+  #- name: "Cloud/DevOps"
+  #  git_url: "/cloud_devops"
+  # description: ""
+
+# List of personal or academic projects
+# Feel free to add more projects
+# Please read the project description guideline carefully. Make sure you follow the simplified SDLC pattern. (t.ly/NlXQ)
+highlighted_projects:
+    #project name
+  - name: "Variable Discounted Cashflow Calculator"
+    #URL is optional
+    git_url: "https://github.com/Aurutheran/DCF_Variable_Calculator"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: Created a Variable Discounted Cashflow Calculator web application that calculates the fair valuation of a stock and accounts for variable future changes rather than fixed amounts. Implemented the app with FastAPI, Vercel, Git, and HTML5/CSS3. Webscrapped financial documents from stockanalysis.com and utilized user inputs for growth percentages of EBITDA and free cash flow.
+  - name: "AI Drone Gesture Controller"
+    git_url: "https://github.com/Aurutheran/COE70_Capstone_LeapDrone"
+    description: Developed a AI remote drone controller in Python in order to control a flight drone using your hand as an input. Implemented a gesture recognition convolutional neural network using tensorflow in order to classify hand gestures to drone controls. Transmitted drone control signals with a client-server connection. Created the application using Python, TensorFlow, OpenCV and pandas.
+  - name: "Car Braking Embedded System"
+    #git_url: "https://github.com/Aurutheran/COE70_Capstone_LeapDrone"
+    description: Implemented a car braking embedded system on ARM Cortex M4 embedded processor in order to control the braking system of a car. Programmed the embedded system using C and Assembly in order to control the states of braking (Brake, Accelerate, Park, and ABS).
+  - name: "Parking Garage System"
+    #git_url: "https://github.com/Aurutheran/COE70_Capstone_LeapDrone"
+    description: A parking garage system developed with Python, gRPC, and RabbitMQ in order to track capacity of the parking lot as well as available spots. Utilized gRPC in order to run methods remotely and to monitor health of the parking lot. Employed RabbitMQ to queue available parking spots and deliver estimated wait times to mobile devices through SMS. 
+
+#List of professional experience
+# Please read the project description guideline carefully. Make sure you follow the simplified SDLC pattern. (t.ly/NlXQ)
+#The description must be more than 25 words. If your experience is not software related, please focus on soft skills and achievements (e.g. team collaboration, problem-solving, improvements, communication).
+professional_experience:
+  #Write your Jarvis role as a professional experience rather than training.
+  - title: "Software Developer"
+    company: "Jarvis"
+    duration: "2024-present"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "As a software developer at Jarvis Consulting Group, I am responsible for initiating and implementing projects. Each project is extensively tested, reviewed and deployed. Utilizing Scrum methodology on a daily basis in order to promote communication with team and efficient workflow."
+  - title: "Full Stack Developer"
+    company: "RE/MAX"
+    duration: "Jan 2023 - Dec 2023"
+    description: "Deployed and maintained websites for 10+ realtors. Created RESTful API to connect websites with listing database. Leveraged React.JS and HTML5/CSS3 to create front end. Developed reusable components that are emloyed across 50+ websites in order to promote DRY."
+  - title: "Researcher"
+    company: "Toronto Metropolitan University"
+    duration: "Aug 2023 - Dec 2023"
+    description: "Spearheaded the development of GIS web applications with React.JS, Node.JS, Leaflet.JS and GeoJSON for a myriad of geospatial research use cases including regional statistics, accessibility and heatmap generation. Architected the systems and technical design and incoorporated requirements that were elicited by study group. Delivered a prototype application that garnered praise from research professors and project lead."
+
+#List of edcuation
+education: 
+  - school_name: "Toronto Metropolitan University"
+    duration: "2018-2022"
+    degree: "Bachelor of Engineering"
+    department: "Computer Engineering"
+    # optional
+    awards_achievements: 
+      - "Dean's List (2019, 2020, 2021, 2022)"
+      - "GPA: 3.64/4.33"
+      - "Engineering Redesign Competition Semi-Finalist 2018"
+
+#Optional section
+others:
+    #category
+  # - title: "Certificates"
+  #   #list of items
+  #   bullets:
+  #     - "Udacity Machine Learning (2019)"
+  # - title: "Awards"
+    # bullets:
+    #   - "Winner"
+  - title: "Activities/Hobbies"
+    bullets:
+      - "Working out: I've worked out for the last year and really enjoy being fit and healthy. I'm currently training to improve my bench-press and deadlift."
+      - "Biking: I love exploring new places nearby on my bike. I have a mountain bike that I use for my off-road exploration."
+      - "Collecting Fragrances: I've been amassing different kinds of fragrances as I really enjoy how many unique scent DNAs exist."
+      - "Collecting Vintage Nintendo and Playstation Games: I'm a huge fan of video games. I'm currently collecting vintage consoles as well as some of my favourite childhood games to introduce and play them with my children one day."
