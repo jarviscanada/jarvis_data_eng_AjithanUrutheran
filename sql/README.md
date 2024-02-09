@@ -1,5 +1,5 @@
 # Introduction
-
+This project will introduce us to the SQL and focuses on exploring the different features SQL has to offer in order to interact with data. Topics including insertion, deletion, querying, aggregation functions, scalar functions, window functions, and joins will be covered in this project. This project will have the user setup the following tables: **cd.members**, **cd.facilities**, **cd.bookings**. We will perform queries to these tables in order to practice our knowledge of SQL. 
 # SQL Queries
 
 ##### Table Setup (DDL)
@@ -36,11 +36,6 @@ CREATE TABLE cd.bookings(
 	CONSTRAINT bookings_memid_fk FOREIGN KEY (memid) REFERENCES cd.members(memid) ON DELETE SET NULL,
 	CONSTRAINT bookings_facid_fk FOREIGN KEY (facid) REFERENCES cd.facilities(facid) ON DELETE SET NULL
 );
-##### Question 1: Show all members
-
-
-
-##### Question 2: Lorem ipsum...
 
 
 
