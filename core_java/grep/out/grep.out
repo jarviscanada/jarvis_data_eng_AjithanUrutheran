@@ -1,0 +1,11 @@
+import java.io.IOException;
+     * @throws IOException
+    void process() throws IOException;
+     * @throws IOException if write failed
+    void writeToFile(List<String> lines) throws IOException;
+    public void process() throws IOException {
+        catch (IOException e){
+    public void writeToFile(List<String> lines) throws IOException {
+        catch (IOException e){
+            catch(IOException e){
+                throw new IOException(e);

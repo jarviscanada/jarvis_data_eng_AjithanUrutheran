@@ -1,8 +1,7 @@
 package ca.jrvs.apps.grep;
 
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
-import org.apache.log4j.BasicConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -21,12 +20,18 @@ public class JavaGrepImp implements JavaGrep{
             throw new IllegalArgumentException("USAGE: JavaGrep regex rootPath outFile");
         }
 
-        BasicConfigurator.configure();
 
         JavaGrepImp currSession = new JavaGrepImp();
         currSession.setRegex(args[0]);
         currSession.setRootPath(args[1]);
         currSession.setOutFile(args[2]);
+
+        try {
+            currSession.process();
+        }
+        catch (Exception e) {
+            currSession.logger.error("Error : ", e);
+        }
     }
 
     @Override
@@ -104,7 +109,7 @@ public class JavaGrepImp implements JavaGrep{
             fr = new FileWriter(outputFile);
             br = new BufferedWriter(fr);
             for (String fileLine : lines){
-                br.write(fileLine);
+                br.write(fileLine + '\n');
             }
         }
         catch (IOException e){

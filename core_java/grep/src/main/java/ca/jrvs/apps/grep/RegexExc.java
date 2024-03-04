@@ -6,7 +6,9 @@ public interface RegexExc{
          * @param filename
          * @return
          */
-        public boolean matchJpeg(String filename);
+        public static void matchJpeg(String filename){
+
+        };
 
         /**
          * return true if ip is valid
@@ -14,12 +16,16 @@ public interface RegexExc{
          * @param ip
          * @return
          */
-        public boolean matchIp(String ip);
+        public static void matchIp(String ip){
+
+        };
         /**
          * return true if the line is empty (e.g. empty, whitespace, tabs, etc...)
          * @param line
          * @return
          */
-        public boolean isEmptyLine(String line);
+        public static void isEmptyLine(String line){
+
+        };
 
 }
