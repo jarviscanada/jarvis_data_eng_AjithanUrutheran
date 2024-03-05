@@ -9,3 +9,7 @@ import java.io.IOException;
         catch (IOException e){
             catch(IOException e){
                 throw new IOException(e);
+        catch (IOException e){
+    public void writeToFile(List<String> lines) throws IOException {
+                catch(IOException e){
+        catch (IOException e){
