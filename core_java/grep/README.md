@@ -45,7 +45,7 @@ Due to the variable size of the directory we traverse and amount of matching lin
 # Test
 Testing was performed for this project by using Intellij run configurations. We were able to predefine the arguements and had tested both implementations. Errors present were debugged using logger instances and break points to identify and handle errors. Many regex patterns and file paths were tested to ensure edge cases.
 # Deployment
-The program was deployed using Docker using packaged jar delivered by Maven
+      The program was deployed using Docker using packaged jar delivered by Maven
       -Docker (Utilized for creating docker image and docker file)
       -GitHub[Optional] (Used for cloning JAR from repository)
 # Improvements
