@@ -41,11 +41,11 @@ The Java grep application was designed in order to replicate the grep function i
 writeToFile(matchedLines)
 ```
 # Performance Issue
-      Due to the variable size of the directory we traverse and amount of matching lines returned from the filter, this application faces severe memory issues due to the limited JVM heap size. When working with small directories and files, this application works seamlessly. A temporary fix to this problem would include increasing the JVM's heap size when executing the command. The optimal fix was employed in the second iteration by implementing Stream API and lambda functions. This allowed us to bypass the memory and performance problems when dealing with a large amount of data.
+Due to the variable size of the directory we traverse and amount of matching lines returned from the filter, this application faces severe memory issues due to the limited JVM heap size. When working with small directories and files, this application works seamlessly. A temporary fix to this problem would include increasing the JVM's heap size when executing the command. The optimal fix was employed in the second iteration by implementing Stream API and lambda functions. This allowed us to bypass the memory and performance problems when dealing with a large amount of data.
 # Test
-      Testing was performed for this project by using Intellij run configurations. We were able to predefine the arguements and had tested both implementations. Errors present were debugged using logger instances and break points to identify and handle errors. Many regex patterns and file paths were tested to ensure edge cases.
+Testing was performed for this project by using Intellij run configurations. We were able to predefine the arguements and had tested both implementations. Errors present were debugged using logger instances and break points to identify and handle errors. Many regex patterns and file paths were tested to ensure edge cases.
 # Deployment
-      The program was deployed using Docker using packaged jar delivered by Maven
+The program was deployed using Docker using packaged jar delivered by Maven
       -Docker (Utilized for creating docker image and docker file)
       -GitHub[Optional] (Used for cloning JAR from repository)
 # Improvements
