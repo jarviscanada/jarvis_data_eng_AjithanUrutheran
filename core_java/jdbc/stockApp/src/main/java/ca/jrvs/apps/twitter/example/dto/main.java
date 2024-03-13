@@ -12,7 +12,7 @@ public class main {
     public static void main(String[] args) {
 
         String symbol = "AAPL";
-        String apiKey = "1554b33734msh65466f6d5c8faeap189293jsne651b15f82ac";
+        String apiKey = "HOTFIX";
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol="+symbol+"&datatype=json"))
