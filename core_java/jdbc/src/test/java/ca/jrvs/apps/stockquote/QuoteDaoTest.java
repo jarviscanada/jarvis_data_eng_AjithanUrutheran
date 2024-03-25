@@ -90,7 +90,6 @@ public class QuoteDaoTest {
         else{
             assertTrue("No Quote found. Optional is empty", true);
         }
-
     }
 
 
