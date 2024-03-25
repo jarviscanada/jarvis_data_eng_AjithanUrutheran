@@ -1,20 +1,43 @@
 package ca.jrvs.apps.stockquote.dao;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class Quote {
 
+    @JsonProperty("01. symbol")
     private String ticker; //id
+
+    @JsonProperty("02. open")
     private double open;
+
+    @JsonProperty("03. high")
     private double high;
+
+    @JsonProperty("04. low")
     private double low;
+
+    @JsonProperty("05. price")
     private double price;
+
+    @JsonProperty("06. volume")
     private int volume;
+
+    @JsonProperty("07. latest trading day")
     private Date latestTradingDay;
+
+    @JsonProperty("08. previous close")
     private double previousClose;
+
+    @JsonProperty("09. change")
     private double change;
+
+    @JsonProperty("10. change percent")
     private String changePercent;
+
+
     private Timestamp timestamp; //time when the info was pulled
 
     public String getTicker() {
@@ -103,5 +126,22 @@ public class Quote {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    @Override
+    public String toString() {
+
+        return
+                "Symbol:" + ticker + '\n' +
+                "Open:" + open + '\n' +
+                "High:" + high + '\n' +
+                "Low:" + low + '\n' +
+                "Price:" + price + '\n' +
+                "Volume:" + volume + '\n' +
+                "Latest Trading Day:" + latestTradingDay + '\n' +
+                "Previous Close:" + previousClose + '\n' +
+                "Change:" + change + '\n' +
+                "Change Percent:" + changePercent + '\n' +
+                "Timestamp: " + timestamp;
     }
 }

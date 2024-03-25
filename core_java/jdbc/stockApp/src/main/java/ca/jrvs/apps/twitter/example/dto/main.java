@@ -12,7 +12,7 @@ public class main {
     public static void main(String[] args) {
 
         String symbol = "AAPL";
-        String apiKey = "1554b33734msh65466f6d5c8faeap189293jsne651b15f82ac";
+        String apiKey = "78aaf7f7c4mshc87167b1e7f9539p14d55ejsn59e734b9a63c";
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol="+symbol+"&datatype=json"))
@@ -20,9 +20,10 @@ public class main {
                 .header("X-RapidAPI-Host", "alpha-vantage.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
-        try {
+        try{
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println(response.body());
+            //System.out.println(response.body());
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {

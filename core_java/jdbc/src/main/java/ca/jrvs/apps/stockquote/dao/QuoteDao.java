@@ -17,6 +17,9 @@ public class QuoteDao implements CrudDao<Quote, String> {
     private static final String DELETE_ALL = "DELETE FROM quote";
     private static final String INSERT_ONE = "INSERT into quote (symbol, open, high, low, price, volume, latest_trading_day, previous_close, change, change_percent, timestamp) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE_ONE = "UPDATE quote SET open = ?, high = ?, low = ?, price = ?, volume = ?, latest_trading_day = ?, previous_close = ?, change = ?, change_percent = ?, timestamp = ? WHERE symbol = ?";
+    public QuoteDao(Connection c){
+        this.c = c;
+    }
     @Override
     public Quote save(Quote entity) throws IllegalArgumentException {
         if(entity == null){
