@@ -16,7 +16,7 @@ public class PositionDao implements CrudDao<Position, String> {
     private static final String DELETE_ONE = "DELETE FROM position WHERE symbol=?";
     private static final String DELETE_ALL = "DELETE FROM position";
     private static final String INSERT_ONE = "INSERT into position (symbol, number_of_shares, value_paid) VALUES (?,?,?)";
-    private static final String UPDATE_ONE = "UPDATE position SET position number_of_shares = ?, value_paid = ? WHERE symbol = ?";
+    private static final String UPDATE_ONE = "UPDATE position SET number_of_shares = ?, value_paid = ? WHERE symbol = ?";
     public PositionDao(Connection c){
         this.c = c;
     }
@@ -135,5 +135,12 @@ public class PositionDao implements CrudDao<Position, String> {
         position.setNumOfShares(rs.getInt("number_of_shares"));
 
         return position;
+    }
+    private Position createOrder(String symbol, double valuePaid, int shares){
+        Position temp = new Position();
+        temp.setValuePaid(valuePaid);
+        temp.setTicker(symbol);
+        temp.setNumOfShares(shares);
+        return temp;
     }
 }

@@ -4,6 +4,7 @@ import ca.jrvs.apps.stockquote.dao.DatabaseConnectionManager;
 import ca.jrvs.apps.stockquote.dao.Quote;
 import ca.jrvs.apps.stockquote.dao.QuoteDao;
 import ca.jrvs.apps.stockquote.dao.QuoteHttpHelper;
+import ca.jrvs.apps.stockquote.service.QuoteService;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -74,9 +75,10 @@ public class StockQuoteController {
                         String ticker = myObj.nextLine();
 
                         QuoteHttpHelper qhelper = new QuoteHttpHelper(apiKey);
-                        Quote newQuote = qhelper.fetchQuoteInfo(ticker);
+                        QuoteService qService = new QuoteService(quotedao,qhelper);
+                        Optional<Quote> newQuote = qService.fetchQuoteDataFromAPI(ticker);
 
-                        quotedao.save(newQuote);
+                        quotedao.save(newQuote.get());
 
                     }
                     catch (SQLException e) {
