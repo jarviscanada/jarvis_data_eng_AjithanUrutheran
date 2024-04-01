@@ -60,10 +60,7 @@ public class QuoteHttpHelper {
         return null;
     }
 
-//    public static void main(String[] args) {
-//        QuoteHttpHelper qhelper = new QuoteHttpHelper("78aaf7f7c4mshc87167b1e7f9539p14d55ejsn59e734b9a63c");
-//        qhelper.fetchQuoteInfo("MSFT");
-//    }
+
 
 
 }
