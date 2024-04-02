@@ -14,7 +14,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.*;
 
-public class PositionDaoTest {
+public class PositionService_UnitTest {
     private QuoteService qService;
     private PositionService pService;
 

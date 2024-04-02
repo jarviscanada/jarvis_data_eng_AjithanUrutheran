@@ -19,7 +19,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyObject;
 import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
@@ -74,6 +74,10 @@ public class PositionService_IntTest {
         verify(mockPositionDao,times(1)).findById(ticker);
         verify(mockPositionDao,times(1)).deleteById(ticker);
 
+        when(mockPositionDao.findById(ticker)).thenReturn(Optional.empty());
+
+        Optional<Position> expected = mockPositionDao.findById(ticker);
+        assertTrue(!expected.isPresent()); //Not present after deletion
     }
-    
+
 }
