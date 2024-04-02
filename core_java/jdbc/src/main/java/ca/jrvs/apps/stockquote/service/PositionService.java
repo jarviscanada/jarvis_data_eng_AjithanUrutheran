@@ -1,12 +1,16 @@
 package ca.jrvs.apps.stockquote.service;
 
+import ca.jrvs.apps.stockquote.controller.StockQuoteController;
 import ca.jrvs.apps.stockquote.dao.Position;
 import ca.jrvs.apps.stockquote.dao.PositionDao;
 import ca.jrvs.apps.stockquote.dao.Quote;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
 
 public class PositionService {
+    private static final Logger logger = LoggerFactory.getLogger(StockQuoteController.class);
 
     private PositionDao dao;
 
@@ -41,7 +45,7 @@ public class PositionService {
             dao.deleteById(ticketPosition.get().getTicker());
         }
         else{
-            System.out.println("Cannot sell ticket due to incorrect ticker/non-existent position");
+            logger.error("Cannot sell ticket due to incorrect ticker/non-existent position");
         }
     }
 

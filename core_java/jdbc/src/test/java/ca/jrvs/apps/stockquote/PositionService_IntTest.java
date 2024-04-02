@@ -1,22 +1,15 @@
 package ca.jrvs.apps.stockquote;
 
-import ca.jrvs.apps.stockquote.dao.DatabaseConnectionManager;
 import ca.jrvs.apps.stockquote.dao.Position;
 import ca.jrvs.apps.stockquote.dao.PositionDao;
-import ca.jrvs.apps.stockquote.dao.QuoteDao;
 import ca.jrvs.apps.stockquote.service.PositionService;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Optional;
 
 import static org.junit.Assert.*;

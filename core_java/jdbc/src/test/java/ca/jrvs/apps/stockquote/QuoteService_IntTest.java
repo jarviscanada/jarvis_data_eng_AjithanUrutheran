@@ -1,10 +1,8 @@
 package ca.jrvs.apps.stockquote;
 
-import ca.jrvs.apps.stockquote.dao.PositionDao;
 import ca.jrvs.apps.stockquote.dao.Quote;
 import ca.jrvs.apps.stockquote.dao.QuoteDao;
 import ca.jrvs.apps.stockquote.dao.QuoteHttpHelper;
-import ca.jrvs.apps.stockquote.service.PositionService;
 import ca.jrvs.apps.stockquote.service.QuoteService;
 import org.junit.Before;
 import org.junit.Test;

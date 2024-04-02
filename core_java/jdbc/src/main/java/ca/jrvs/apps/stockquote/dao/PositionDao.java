@@ -8,9 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import org.apache.log4j.BasicConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 public class PositionDao implements CrudDao<Position, String> {
 
     private Connection c;
+    private static final Logger logger = LoggerFactory.getLogger(PositionDao.class);
     private static final String GET_ONE = "Select symbol, number_of_shares, value_paid FROM position WHERE symbol=?";
     private static final String GET_ALL = "SELECT symbol, number_of_shares, value_paid FROM position";
     private static final String DELETE_ONE = "DELETE FROM position WHERE symbol=?";
@@ -24,7 +28,7 @@ public class PositionDao implements CrudDao<Position, String> {
     @Override
     public Position save(Position entity) throws IllegalArgumentException {
         if(entity == null){
-            throw new IllegalArgumentException("Null position");
+            logger.error("ERROR: Null position");
         }
 
         if(this.findById(entity.getTicker()).isEmpty()){
@@ -37,8 +41,8 @@ public class PositionDao implements CrudDao<Position, String> {
                 return entity;
             }
             catch(SQLException e){
-                e.printStackTrace();
-                throw new RuntimeException("Failed to insert position");
+                //e.printStackTrace();
+                logger.error("ERROR: Failed to insert position",e);
             }
         }
         else{
@@ -51,18 +55,18 @@ public class PositionDao implements CrudDao<Position, String> {
                 return entity;
             }
             catch(SQLException e){
-                e.printStackTrace();
-                throw new RuntimeException("Failed to update specified ID");
+                //e.printStackTrace();
+                logger.error("ERROR: Failed to update specified ID",e);
             }
         }
-
+        return entity;
     }
 
     @Override
     public Optional<Position> findById(String s) throws IllegalArgumentException {
 
         if (s == null){
-            throw new IllegalArgumentException("Null ID Detected");
+            logger.error("ERROR: Null ID Detected");
         }
         try(PreparedStatement statement = this.c.prepareStatement(GET_ONE);){
             statement.setString(1,s);
@@ -72,8 +76,7 @@ public class PositionDao implements CrudDao<Position, String> {
             }
         }
         catch(SQLException e){
-            e.printStackTrace();
-            throw new RuntimeException(e);
+            logger.error("ERROR: SQL Exception detected.",e);
         }
         return Optional.empty();
     }
@@ -89,8 +92,8 @@ public class PositionDao implements CrudDao<Position, String> {
             }
         }
         catch(SQLException e){
-            e.printStackTrace();
-            throw new RuntimeException(e);
+            //e.printStackTrace();
+            logger.error("ERROR: SQL Exception. Check database connection / tables / queries.",e);
         }
         return positionList;
     }
@@ -98,15 +101,14 @@ public class PositionDao implements CrudDao<Position, String> {
     @Override
     public void deleteById(String s) throws IllegalArgumentException {
         if(s == null){
-            throw new IllegalArgumentException("Null ID Detected");
+            logger.error("ERROR: Null ID Detected");
         }
         try(PreparedStatement statement = this.c.prepareStatement(DELETE_ONE);){
             statement.setString(1,s);
             statement.executeUpdate();
         }
         catch(SQLException e){
-            e.printStackTrace();
-            throw new RuntimeException("Failed to delete specified ID");
+            logger.error("ERROR: Failed to delete specified ID",e);
         }
     }
 
@@ -116,8 +118,8 @@ public class PositionDao implements CrudDao<Position, String> {
             statement.executeUpdate();
         }
         catch(SQLException e){
-            e.printStackTrace();
-            throw new RuntimeException("Failed to delete all IDs");
+            //e.printStackTrace();
+            logger.error("Failed to delete all IDs",e);
         }
     }
 

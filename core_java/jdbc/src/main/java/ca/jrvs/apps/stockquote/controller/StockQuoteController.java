@@ -5,16 +5,21 @@ import ca.jrvs.apps.stockquote.dao.Quote;
 import ca.jrvs.apps.stockquote.dao.QuoteDao;
 import ca.jrvs.apps.stockquote.dao.QuoteHttpHelper;
 import ca.jrvs.apps.stockquote.service.QuoteService;
+import org.apache.log4j.BasicConfigurator;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Scanner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StockQuoteController {
     private static String host;
@@ -22,8 +27,9 @@ public class StockQuoteController {
     private static String user;
     private static String password;
     private static String apiKey;
+    private static final Logger logger = LoggerFactory.getLogger(StockQuoteController.class);
     public static void main(String[] args) {
-
+        BasicConfigurator.configure();
         Map<String, String> properties = new HashMap<>();
         try (BufferedReader br = new BufferedReader(new FileReader("src/resources/properties.txt"))) {
             String line;
@@ -32,15 +38,15 @@ public class StockQuoteController {
                 properties.put(tokens[0], tokens[1]);
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error("ERROR: Cannot find properties file. Check if files exist.",e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("ERROR: Issue with properties resource. Please check contents of file.",e);
         }
 
         try {
             Class.forName(properties.get("db-class"));
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error("ERROR: Check database connection and contents.", e);
         }
 
 
@@ -139,7 +145,7 @@ public class StockQuoteController {
                         }
                     }
                     catch (SQLException e){
-                        throw new RuntimeException(e);
+                        logger.error("ERROR: Issue with database queries. ",e);
                     }
                     break;
                 case "5":
@@ -149,14 +155,14 @@ public class StockQuoteController {
 
                         try{
                             quotedao.deleteAll();
-                            System.out.println("Successfully Deleted All Stocks");
+                            logger.info("Successfully deleted all values.");
                         }
                         catch(IllegalArgumentException e){
-                            e.printStackTrace();
+                            logger.error("ERROR: Issue with deleting all values.",e);
                         }
                     }
                     catch (SQLException e){
-                        throw new RuntimeException(e);
+                        logger.error("ERROR: Issue with SQL. Please check database connection / queries / tables.",e);
                     }
                     break;
 

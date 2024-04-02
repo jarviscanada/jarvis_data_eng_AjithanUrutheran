@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class JDBCExecutor {
+
     public static void main(String[] args) {
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost","stock_quote","postgres","password");
         Scanner myObj = new Scanner(System.in);

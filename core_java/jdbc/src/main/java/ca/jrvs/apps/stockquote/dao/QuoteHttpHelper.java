@@ -1,5 +1,6 @@
 package ca.jrvs.apps.stockquote.dao;
 
+import ca.jrvs.apps.stockquote.controller.StockQuoteController;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,11 +14,13 @@ import java.sql.Timestamp;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class QuoteHttpHelper {
     private String apiKey;
     private OkHttpClient client;
-
+    private static final Logger logger = LoggerFactory.getLogger(StockQuoteController.class);
     /**
      * Fetch latest quote data from Alpha Vantage endpoint
      * @param symbol
@@ -48,13 +51,14 @@ public class QuoteHttpHelper {
             //ignore property to not map w/ default value if not able to map
 
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error("ERROR: Interrupted Exception.",e);
         } catch (JsonMappingException e) {
-            e.printStackTrace();
+            logger.error("ERROR: JSON mapping Exception.",e);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            logger.error("ERROR: Json Processing Exception.",e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("ERROR: IO Exception.",e);
+
         }
 
         return null;

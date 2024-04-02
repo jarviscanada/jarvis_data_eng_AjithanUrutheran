@@ -17,8 +17,6 @@ import static org.junit.Assert.*;
 
 public class QuoteService_UnitTest {
     private QuoteDao quoteDao;
-    private Quote tempQuote;
-
     private Connection connection;
     private PreparedStatement statement;
     private DatabaseConnectionManager dcm;
@@ -74,10 +72,10 @@ public class QuoteService_UnitTest {
 
     @Test
     public void deleteTest(){
-        Quote newQuote = qhelper.fetchQuoteInfo("AMZN");
+        Quote newQuote = qhelper.fetchQuoteInfo("GOOG");
         quoteDao.save(newQuote);
-        quoteDao.deleteById("AMZN");
-        Optional<Quote> ticketQuote = quoteDao.findById("AMZN");
+        quoteDao.deleteById("GOOG");
+        Optional<Quote> ticketQuote = quoteDao.findById("GOOG");
 
         if (ticketQuote.isPresent()){
             Quote testQuote = ticketQuote.get();

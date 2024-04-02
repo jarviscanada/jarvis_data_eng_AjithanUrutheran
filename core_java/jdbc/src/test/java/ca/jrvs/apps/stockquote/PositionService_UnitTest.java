@@ -44,10 +44,12 @@ public class PositionService_UnitTest {
             pService = new PositionService(positionDao);
 
             //Populate tables to prevent foreign key interference
-            quoteDao.save(qService.fetchQuoteDataFromAPI("AAPL").get());
-            quoteDao.save(qService.fetchQuoteDataFromAPI("MSFT").get());
-            quoteDao.save(qService.fetchQuoteDataFromAPI("TSLA").get());
-            quoteDao.save(qService.fetchQuoteDataFromAPI("AMD").get());
+//            quoteDao.save(qService.fetchQuoteDataFromAPI("AAPL").get());
+//            quoteDao.save(qService.fetchQuoteDataFromAPI("MSFT").get());
+//            quoteDao.save(qService.fetchQuoteDataFromAPI("TSLA").get());
+//            quoteDao.save(qService.fetchQuoteDataFromAPI("AMD").get());
+//            quoteDao.save(qService.fetchQuoteDataFromAPI("GOOG").get());
+
         }
         catch(SQLException e){
             e.printStackTrace();
@@ -66,7 +68,7 @@ public class PositionService_UnitTest {
     }
 
     @Test
-    public void SaveFindTest(){
+    public void FindTest(){
         Position expected = new Position();
         expected.setTicker("AAPL");
         expected.setNumOfShares(60);
@@ -74,30 +76,48 @@ public class PositionService_UnitTest {
 
         pService.buy("AAPL",60,148.20);
 
-        Position actual = positionDao.findById("AAPL").orElse(null);
+        Position actual = positionDao.findById("AAPL").get();
 
         // Check if the actual position is not null
         assertNotNull(actual);
 
         // Check if the actual position matches the expected position
         assertEquals(expected.getNumOfShares(), actual.getNumOfShares());
-
     }
 
     @Test
     public void DeleteIdTest(){
 
 
-        pService.buy("AAPL",90,168.20);
-        positionDao.deleteById("AAPL");
-        Optional<Position> ticketPosition = positionDao.findById("AAPL");
-        if (ticketPosition.isPresent()){
-            Position testPosition = ticketPosition.get();
-            assertNull(testPosition.getTicker());
-        }
-        else{
-            assertTrue("No Quote found. Optional is empty", true);
-        }
+        Position expected = new Position();
+        expected.setTicker("AAPL");
+        expected.setNumOfShares(75);
+        expected.setValuePaid(120.21);
+
+        pService.buy("AAPL", 75, 120.21);
+
+        pService.sell("AAPL");
+
+
+        boolean isDeleted = positionDao.findById("AAPL").isEmpty();
+        assertTrue(isDeleted);
+    }
+    @Test
+    public void NotDeletedIdTest(){
+
+
+        Position expected = new Position();
+        expected.setTicker("AAPL");
+        expected.setNumOfShares(75);
+        expected.setValuePaid(120.21);
+
+        pService.buy("AAPL", 75, 120.21);
+
+        //pService.sell("AAPL"); NOT DELETED
+
+
+        boolean isDeleted = positionDao.findById("AAPL").isEmpty();
+        assertFalse(isDeleted);
     }
 
 

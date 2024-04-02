@@ -7,10 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class QuoteDao implements CrudDao<Quote, String> {
 
     private Connection c;
+    private static final Logger logger = LoggerFactory.getLogger(PositionDao.class);
     private static final String GET_ONE = "Select * FROM quote WHERE symbol=?";
     private static final String GET_ALL = "Select * from quote";
     private static final String DELETE_ONE = "DELETE FROM quote WHERE symbol=?";
@@ -23,7 +26,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
     @Override
     public Quote save(Quote entity) throws IllegalArgumentException {
         if(entity == null){
-            throw new IllegalArgumentException("Null Quote");
+            logger.error("Null Quote");
         }
 
         if(this.findById(entity.getTicker()).isEmpty()){
@@ -45,8 +48,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
                 return entity;
             }
             catch(SQLException e){
-                e.printStackTrace();
-                throw new RuntimeException("Failed to insert quote");
+                //e.printStackTrace();
+                logger.error("ERROR: Failed to insert quote",e);
             }
         }
         else{
@@ -68,10 +71,11 @@ public class QuoteDao implements CrudDao<Quote, String> {
                 return entity;
             }
             catch(SQLException e){
-                e.printStackTrace();
-                throw new RuntimeException("Failed to update specified ID");
+                // e.printStackTrace();
+                logger.error("Error: Failed to update specified ID",e);
             }
         }
+        return entity;
     }
 
     @Override
@@ -85,7 +89,6 @@ public class QuoteDao implements CrudDao<Quote, String> {
             if (rs.next()){
                 return Optional.ofNullable(createQuote(rs));
             }
-
         }
         catch(SQLException e){
             e.printStackTrace();
@@ -105,8 +108,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
             }
         }
         catch(SQLException e){
-            e.printStackTrace();
-            throw new RuntimeException(e);
+            logger.error("ERROR: Sql Error detected",e);
         }
         return quoteList;
     }
@@ -121,8 +123,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
             statement.executeUpdate();
         }
         catch(SQLException e){
-            e.printStackTrace();
-            throw new RuntimeException("Failed to delete specified ID");
+            logger.error("Failed to delete specified ID",e);
         }
     }
 
@@ -133,8 +134,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
             statement.executeUpdate();
         }
         catch(SQLException e){
-            e.printStackTrace();
-            throw new RuntimeException("Failed to delete all IDs");
+
+            logger.error("ERROR: Failed to delete all IDs",e);
         }
     }
 

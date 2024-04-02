@@ -14,14 +14,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 
+import org.apache.log4j.BasicConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class StockPositionController {
     private static String host;
     private static String db;
     private static String user;
     private static String password;
     private static String apiKey;
-    public static void main(String[] args) throws SQLException {
+    private static final Logger logger = LoggerFactory.getLogger(StockPositionController.class);
 
+    public static void main(String[] args) throws SQLException {
+        BasicConfigurator.configure();
         Map<String, String> properties = new HashMap<>();
         try (BufferedReader br = new BufferedReader(new FileReader("src/resources/properties.txt"))) {
             String line;
@@ -30,15 +36,15 @@ public class StockPositionController {
                 properties.put(tokens[0], tokens[1]);
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error("ERROR: Properties file cannot be found.",e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("ERROR: IO Exception whilst trying to access properties file.",e);
         }
 
         try {
             Class.forName(properties.get("db-class"));
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error("ERROR: Database class cannot be found. Check database connection.",e);
         }
 
 
@@ -95,7 +101,7 @@ public class StockPositionController {
                         pService.buy(ticker,numberShares,price);
                     }
                     catch (SQLException e) {
-                        throw new RuntimeException(e);
+                        logger.error("Error in SQL. Cannot insert position data.", e);
                     }
                     break;
                 case "2":
