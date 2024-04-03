@@ -105,15 +105,15 @@ public class StockPositionController {
                     }
                     break;
                 case "2":
-                    String ticker;
+                        String ticker;
 
-                    System.out.println("Enter ticket of stock you wish to sell: ");
-                    ticker = myObj.nextLine();
-                    connection = dcm.getConnection();
+                        System.out.println("Enter ticket of stock you wish to sell: ");
+                        ticker = myObj.nextLine();
+                        connection = dcm.getConnection();
 
-                    positiondao = new PositionDao(connection);
-                    pService = new PositionService(positiondao);
-                    pService.sell(ticker);
+                        positiondao = new PositionDao(connection);
+                        pService = new PositionService(positiondao);
+                        pService.sell(ticker);
                     break;
                 default:
                     System.out.println("ERROR:");
@@ -125,3 +125,4 @@ public class StockPositionController {
 
     }
 }
+

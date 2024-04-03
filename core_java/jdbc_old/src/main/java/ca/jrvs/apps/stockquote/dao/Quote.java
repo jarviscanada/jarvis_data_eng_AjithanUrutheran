@@ -133,15 +133,15 @@ public class Quote {
 
         return
                 "Symbol:" + ticker + '\n' +
-                        "Open:" + open + '\n' +
-                        "High:" + high + '\n' +
-                        "Low:" + low + '\n' +
-                        "Price:" + price + '\n' +
-                        "Volume:" + volume + '\n' +
-                        "Latest Trading Day:" + latestTradingDay + '\n' +
-                        "Previous Close:" + previousClose + '\n' +
-                        "Change:" + change + '\n' +
-                        "Change Percent:" + changePercent + '\n' +
-                        "Timestamp: " + timestamp;
+                "Open:" + open + '\n' +
+                "High:" + high + '\n' +
+                "Low:" + low + '\n' +
+                "Price:" + price + '\n' +
+                "Volume:" + volume + '\n' +
+                "Latest Trading Day:" + latestTradingDay + '\n' +
+                "Previous Close:" + previousClose + '\n' +
+                "Change:" + change + '\n' +
+                "Change Percent:" + changePercent + '\n' +
+                "Timestamp: " + timestamp;
     }
 }
