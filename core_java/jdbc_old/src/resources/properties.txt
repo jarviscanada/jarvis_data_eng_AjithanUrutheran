@@ -1,7 +1,0 @@
-db-class:org.postgresql.Driver
-server:localhost
-database:stock_quote
-port:5432
-username:postgres
-password:password
-api-key:78aaf7f7c4mshc87167b1e7f9539p14d55ejsn59e734b9a63c
