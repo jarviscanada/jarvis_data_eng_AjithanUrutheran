@@ -1,7 +1,7 @@
 # Java Grep App
 
 # Introduction
-The Java grep application is an application that will allow a user to search for matching strings in a designated file directory. This function behaves similar to the Linux Grep command. This application has the added benefit of being platform dependent due to the nature of Java's bytecode. This allows for any end user regardless of their system being able to filter and search for their desired string. The application was dockerized as to contain all the essential tools The application was first implemented using Java and the utils library. This implementation was improved in the second implementation by adding support for Stream API and Lambda functions. The code was testing using Intellij's run configurations as well as using the Log4j logger.
+The Java grep application is an application that will allow a user to search for matching strings in a designated file directory. This function behaves similar to the Linux Grep command. This application has the added benefit of being platform dependent due to the nature of Java's bytecode. This allows for any end user regardless of their system being able to filter and search for their desired string. The application was dockerized as to contain all the essential tools. The application was first implemented using Java and the utils library. This implementation was improved in the second implementation by adding support for Stream API and Lambda functions. The code was testing using Intellij's run configurations as well as using the Log4j logger.
 
 # Quick Start
 1. Running with JAR through cloning Git Repo by targetting classpath and class files
