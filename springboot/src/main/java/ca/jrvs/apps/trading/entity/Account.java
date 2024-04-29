@@ -1,6 +1,10 @@
 package ca.jrvs.apps.trading.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Entity
 public class Account {
+    @Id
     private int id;
     private int traderId;
     private double amount;
