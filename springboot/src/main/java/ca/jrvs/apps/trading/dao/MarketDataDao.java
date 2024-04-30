@@ -257,7 +257,7 @@ public class MarketDataDao {
 
         //MarketDataConfig mData = new MarketDataConfig();
         //mData.setHost("https://api.iex.cloud/v1/data/core/quote/");
-        //mData.setToken("sk_7569f60aa8ea461f96328d32c55c30c2");
+        //mData.setToken("INSERTTOKEN");
 
         //MarketDataDao mDao = new MarketDataDao(HttpClient.newHttpClient(),mData);
 
@@ -270,7 +270,7 @@ public class MarketDataDao {
         //logger.info(tester.get(1).getSymbol());
 
         //Test for executeHttpGet
-        //String responseBody = mDao.executeHttpGet("https://api.iex.cloud/v1/data/core/quote/aapl,tssla?token=sk_7569f60aa8ea461f96328d32c55c30c2").get();
+        //String responseBody = mDao.executeHttpGet("https://api.iex.cloud/v1/data/core/quote/aapl,tssla?token=INSERTTOKEN").get();
         //logger.info(responseBody);
     }
 
