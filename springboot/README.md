@@ -9,7 +9,7 @@ saving quote information, purchasing/selling quotes, having mock bank accounts t
     - Connect both docker images under a docker network
     - Begin containers using docker start 'containerName'
 - Try trading-app with postman UI using correct end points and body data
-- 
+- Verify Database connectivity using DBeaver/PGAdmin4
 
 # Implemenation
 The backend api was developed with springboot while leveraging the n-layered architecture. The layers consisted of creating entities mapped to the database tables, dao's for handling data logic, service layer for method abstraction and the controller layer for communicating between the view and model. 
