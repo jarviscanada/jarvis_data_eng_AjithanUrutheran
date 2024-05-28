@@ -1,12 +1,21 @@
 package ca.jrvs.apps.trading.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Entity
+@Table(name="account")
+
 public class Account {
     @Id
+    @Column(name="id")
     private int id;
+    @Column(name="trader_id")
+
     private int traderId;
+    @Column(name="amount")
     private double amount;
 
     public int getId(){

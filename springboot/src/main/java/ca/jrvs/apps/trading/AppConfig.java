@@ -1,7 +1,9 @@
 package ca.jrvs.apps.trading;
 
 import ca.jrvs.apps.trading.dao.MarketDataDao;
+import ca.jrvs.apps.trading.entity.Quote;
 import ca.jrvs.apps.trading.model.config.MarketDataConfig;
+import ca.jrvs.apps.trading.service.QuoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +19,7 @@ public class AppConfig {
     public MarketDataConfig marketDataConfig(){
         MarketDataConfig marketDataConfig = new MarketDataConfig();
         marketDataConfig.setHost("https://api.iex.cloud/v1/data/core/quote/");
-        marketDataConfig.setToken("sk_7569f60aa8ea461f96328d32c55c30c2");
+        marketDataConfig.setToken("sk_07ca1b99a65544718c1dcb9448d385be");
         return marketDataConfig;
     }
 
@@ -29,5 +31,10 @@ public class AppConfig {
     @Bean
     public HttpClient httpClientConfig(){
         return HttpClient.newHttpClient();
+    }
+
+    @Bean
+    public QuoteService serviceConfig(){
+        return new QuoteService(new MarketDataDao(httpClientConfig(),marketDataConfig()));
     }
 }

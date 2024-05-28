@@ -21,7 +21,7 @@ public class MarketDataDaoIntTest {
     public void init(){
 
         MarketDataConfig marketDataConfig = new MarketDataConfig();
-        marketDataConfig.setToken("INSERTTOKEN");
+        marketDataConfig.setToken("sk_7569f60aa8ea461f96328d32c55c30c2");
         marketDataConfig.setHost("https://api.iex.cloud/v1/data/core/quote/");
 
         dao = new MarketDataDao(HttpClient.newHttpClient(),marketDataConfig);
