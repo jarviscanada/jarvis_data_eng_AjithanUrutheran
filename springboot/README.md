@@ -63,7 +63,8 @@ Developers benefit heavily from postman as they are able to see the responses th
 - Test Configuration file was created to create beans for test environment
 - Utilized postman in order to send HTTP methods with correct body arguments and retrieved correct responses
 - Verified any CRUD operations on test database
-  ![Postman Testing](./assets/postman.png)
+## Sample Test
+![Postman Testing](./assets/postman.png)
 
 
 # Deployment
