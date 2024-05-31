@@ -1,7 +1,7 @@
 # Linux Resource Cluster Monitoring Agent
 
 # Introduction
-The Linux resource cluster monitoring agent is a minimum viable product (MVP) that will monitor the resources across a cluster environment. Many bash scripts will execute in order to perform tasks such as registering a host container's information as well as updating a host container's usage in real time. The users of this program will be the Linux Cluster Administration team (LCA). The LCA will use this program to monitor the nodes in our Linux cluster and collect information to make load- and storage-balancing decisions. Technologies that are explored in this program include Git (version control), Linux bash script, docker (hosting and containerizing database), and PostgreSQL (storing and querying data).
+The Linux resource cluster monitoring agent is a minimum viable product (MVP) that will monitor the resources across a cluster environment. Many bash scripts will execute in order to perform tasks such as registering a host container's information as well as updating a host container's usage in real time. The users of this program will be the Linux Cluster Administration team (LCA). The LCA will use this program to monitor the nodes in our Linux cluster and collect information to make load and storage balancing decisions. Technologies that are explored in this program include Git (version control), Linux bash script, docker (hosting and containerizing database), and PostgreSQL (storing and querying data).
 
 # Quick Start
 1. Start a psql instance using psql_docker.sh
